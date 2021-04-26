@@ -4,6 +4,8 @@ CHANGELOG
 Appunti di programmazione
 - - - - - - - - - - - - -
 
+# Stato del documento
+
 ### ver. 0.21
 * Struttura selezione
 * HTML, struttura
@@ -16,3 +18,9 @@ Appunti di programmazione
 * integrazione alla gestione delle immagini in twine
 
 * Bibliografia
+=======
+
+## ver. 0.21
+- Struttura selezione
+- HTML, struttura
+- CSS
