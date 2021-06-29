@@ -27,33 +27,21 @@ def cuore = {
 }
 
 
-//var corpo = fillColor(yellow) -> Picture.rectangle(20,30)
+// usa una immagine esterna contenuta nella stessa cartella dello script
+val giocatore = Picture.image("freccia.png")
 
-var corpo = Picture.rectangle(30,40)
-    corpo.setPenColor(yellow)
-    corpo.setFillColor(yellow)
+// scala l'immagine e la posiziona
+giocatore.scale(0.5)   
+giocatore.setPosition( cb.x + cb.width/2, cb.y + cb.height/2)
+giocatore.draw()
 
-var testa = Picture{
-    left(60)
-    forward(30)
-    left(60)
-    forward(30)
-    left(150)
-    forward(50)    
-  
-}
-
-testa.setFillColor(red)
-val giocatore = picColCentered(corpo,testa)
-    giocatore.rotate(90)
-    giocatore.setPosition( cb.x + cb.width/2, cb.y + cb.height/2)
-
-draw(giocatore)
-
+// vettore che contiene i cuori che rappresentano le vite 
 val viteCuori = ArrayBuffer.empty[Picture]
 
+// serve a posizionare i cuori a distanza fissa l'uno dall'altro
 var cPos = 0
 
+// popola il vettore di sei vite
 repeat(6){
 
     val c = cuore
@@ -65,17 +53,18 @@ repeat(6){
     viteCuori.append(c)
 }
 
-
+// definisce le palline
 def nuovaPalla = {
     fillColor(red) -> Picture.circle(random(9))
 }
 
-
+// vettore che contiene tutte le palle generate
 val ostacoli = HashSet.empty[Picture]
 
+// generatore casuale di palline
 timer(200) {
     val b = nuovaPalla
-    b.setPosition(cb.x+5 , cb.y + random((cb.height).toInt))
+    b.setPosition(cb.x+10 , cb.y + random((cb.height).toInt))
     ostacoli.add(b)
     draw(b)
 }
@@ -85,6 +74,20 @@ var velG = 2
 var vite = 6
 var punti = 0
 
+// velocità del cuore che vola e relativo vettore e funzioni
+var velVita = Vector2D(6,6)
+
+val volaV = HashSet.empty[Picture]
+  
+def volaVita(){
+  var c = cuore
+  c.scale(3)
+  c.setPosition(giocatore.position)
+  c.draw()
+  volaV.add(c)
+  }
+
+// funzione che sottrae la vita ed il cuore
 def perdeVita() {
       vite = vite - 1
       
@@ -95,6 +98,7 @@ def perdeVita() {
       }
 }
 
+// immagine che gestisce il punteggio
 val nPunti = Picture.textu(punti,30)
     nPunti.translate(cb.x + cb.width - 50, cb.y + cb.height-50)
     nPunti.setPenColor(yellow)
@@ -105,10 +109,17 @@ timer(1000){
       nPunti.update(punti)  
 }
 
-
+// incremento della velocità ogni 3 secondi
 timer(3000){
   vel = vel + Vector2D(0.2,0)
 }
+
+// aumenta la grandezza del giocatore ogni 10 secondi
+timer(10000){
+  giocatore.scale(1.2)
+}
+
+// restituisce i punti finali
 
  def gameOver(msg: String) {
       val pmsg = Picture {
@@ -122,8 +133,22 @@ timer(3000){
 
   }
 
-
+// gestione dell'animazione di tutte le immagini
 animate {
+
+    volaV.foreach { c =>
+      c.translate(velVita)
+    }
+
+
+    volaV.foreach { c =>
+        if (c.collidesWith(stageBorder)) {
+            volaV.remove(c)
+            c.erase()            
+        }
+
+    }
+
     ostacoli.foreach { b =>
         b.translate(vel)
     }
@@ -139,20 +164,21 @@ animate {
           ostacoli.remove(b)
           b.erase()
           perdeVita()
+          volaVita()
         }
     }
 
 
     if (isKeyPressed(Kc.VK_RIGHT)) {
-        giocatore.translate(0, -velG)
-    }
-    if (isKeyPressed(Kc.VK_LEFT)) {
-        giocatore.translate(0, velG)
-    }
-    if (isKeyPressed(Kc.VK_UP)) {
         giocatore.translate(velG, 0)
     }
-    if (isKeyPressed(Kc.VK_DOWN)) {
+    if (isKeyPressed(Kc.VK_LEFT)) {
         giocatore.translate(-velG, 0)
+    }
+    if (isKeyPressed(Kc.VK_UP)) {
+        giocatore.translate(0, velG)
+    }
+    if (isKeyPressed(Kc.VK_DOWN)) {
+        giocatore.translate(0, -velG)
     }
 }
