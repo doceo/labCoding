@@ -6,11 +6,22 @@ Appunti di programmazione
 
 # Stato del documento
 
+### ver. 0.31
+* Struttura di controllo do-while
+=======
+
+### ver. 0.3
+* Riorganizzazione strutture di controllo e diagrammi di flusso
+* Strutture di controllo for e while 
+=======
+
 ### ver. 0.21
 * Struttura selezione
+* Cicli
 * HTML, struttura
 * CSS
-
+* Pictures, animazioni
+=======
 
 ### ver. 0.2
 
