@@ -1,0 +1,54 @@
+body {
+    padding: 30px;
+    background-color: #DDD;
+    }
+
+p {
+    text-align:left;
+    font-size:24px;
+    line-height:22px;
+    }
+
+h1, h2 {
+
+    text-align:center;
+    font-size:36px;
+    line-height:22px;
+}
+
+a {
+	color: white;
+	font-size: 24px;
+
+}
+
+.header {
+    background-color: red;
+}
+.blocco-1 {
+    background-color: pink;
+}
+.blocco-2 {
+    background-color: yellow;
+    float:left; 
+    display:block; 
+    width:150px; 
+    height:150px;
+    clear:both; 
+
+}
+
+.blocco-3 {
+    background-color: red;
+    float:left; 
+    display:block; 
+    width:150px; 
+    height:150px; 
+    clear:both;
+
+}
+
+.footer {
+    background-color: green;
+}
+

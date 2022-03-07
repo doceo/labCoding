@@ -6,6 +6,9 @@ Appunti di programmazione
 
 # Stato del documento
 
+### ver. 0.4
+* javascript
+
 ### ver. 0.31
 * Struttura di controllo do-while
 =======
