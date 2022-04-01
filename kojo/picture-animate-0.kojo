@@ -26,25 +26,3 @@ fig4.setFillColor(pink)
 var vel4 = Vector2D(-x, -x)
 
 draw(fig1,fig2,fig3,fig4)
-
-animate {
-    fig1.translate(vel1)
-    if (fig1.collidesWith(stageBorder)) {
-        vel1 = bouncePicOffStage(fig1, vel1)
-    }
-    
-    fig2.translate(vel2)
-    if (fig2.collidesWith(stageBorder)) {
-        vel2 = bouncePicOffStage(fig2, vel2)
-    }
-    
-    fig3.translate(vel3)
-    if (fig3.collidesWith(stageBorder)) {
-        vel3 = bouncePicOffStage(fig3, vel3)
-    }
-    
-    fig4.translate(vel4)
-    if (fig4.collidesWith(stageBorder)) {
-        vel4 = bouncePicOffStage(fig4, vel4)
-    }
-}

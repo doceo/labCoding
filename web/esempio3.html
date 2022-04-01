@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Una pagina di esempio</title>
+
+
+
+<style>
+		.grid-container {
+		  display: grid;
+		  column-gap: 50px;
+		  grid-template-columns: auto auto auto;
+		  background-color: rgba(255, 0, 0, 0.1);
+		  padding: 10px;
+		}
+
+		.grid-item {
+		  background-color: rgba(255, 0, 0, 0.1);
+		  border: 1px solid rgba(0, 0, 0, 0.8);
+		  padding: 20px;
+		  font-size: 30px;
+		  text-align: center;
+		}
+
+		.grid-item-3 {
+		  background-color: rgba(0, 255, 255, 0.9);
+		  border: 1px solid rgba(0, 0, 0, 0.8);
+		  padding: 20px;
+		  font-size: 30px;
+		  text-align: center;
+		}
+
+		.grid-item-4 {
+		  background-color: rgba(255, 0, 255, 0.8);
+		  border: 1px solid rgba(0, 0, 0, 0.8);
+		  padding: 20px;
+		  font-size: 30px;
+		  text-align: center;
+		}
+
+		.grid-item-9 {
+		  background-color: rgba(255, 0, 0, 0.9);
+		  border: 1px solid rgba(0, 0, 0, 0.8);
+		  padding: 20px;
+		  font-size: 30px;
+		  text-align: center;
+		}
+
+</style>
+
+<script type="text/javascript">
+
+	function pari(){		
+		console.log("deve modificare i blocchi pari");
+		
+		blocchi_pari = document.getElementsByClassName('pari');
+		console.log(blocchi_pari);
+		console.log(blocchi_pari.length);
+
+		var i;
+		for (i=0; i < blocchi_pari.length; i++){
+		
+			blocchi_pari[i].style.backgroundColor = "white";
+		} 
+
+		blocchi_dispari = document.getElementsByClassName('dispari');
+			var i;
+			for (i=0; i < blocchi_dispari.length; i++){
+			
+			blocchi_dispari[i].style.backgroundColor = "";
+		}
+	}
+	function dispari(){
+		console.log("deve modificare i blocchi dispari");	
+		
+		blocchi_dispari = document.getElementsByClassName('dispari');
+		console.log(blocchi_dispari);
+		console.log(blocchi_dispari.length);
+
+		var i;
+		for (i=0; i < blocchi_dispari.length; i++){
+			blocchi_dispari[i].style.backgroundColor = "white";
+		} 
+	
+		blocchi_pari = document.getElementsByClassName('pari');
+		var i;
+		for (i=0; i < blocchi_pari.length; i++){
+		
+			blocchi_pari[i].style.backgroundColor = "";
+		}
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<h1>costruisci una tabella.</h1>
+
+<p>Usa la corretta gestione delle colonne per costruire la seguente tabella.</p>
+
+<div class="grid-container">
+  <div class="grid-item"><span class="dispari">quadrato 1</span></div>
+  <div class="grid-item"><span class="pari">quadrato 2</span></div>
+  <div class="grid-item-3"><span class="dispari">quadrato 3</span></div>  
+  <div class="grid-item-4"><span class="pari">quadrato 4</span></div>
+  <div class="grid-item"><span class="dispari">quadrato 5</span></div>
+  <div class="grid-item"><span class="pari">quadrato 6</span></div>  
+  <div class="grid-item"><span class="dispari">quadrato 7</span></div>
+  <div class="grid-item"><span class="pari">quadrato 8</span></div>
+  <div class="grid-item-9"><span class="dispari">quadrato 9</span></div>  
+</div>
+
+
+</body>
+</html>
+
+
