@@ -6,6 +6,9 @@ Appunti di programmazione
 
 # Stato del documento
 
+### ver. 0.41
+* Picture e Texture
+
 ### ver. 0.4
 * javascript
 
